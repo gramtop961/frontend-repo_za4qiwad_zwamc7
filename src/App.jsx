@@ -9,6 +9,8 @@ import Testimonials from './components/Testimonials';
 import Marquee from './components/Marquee';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
+import Media from './components/Media';
+import Quiz from './components/Quiz';
 
 function App() {
   return (
@@ -18,9 +20,11 @@ function App() {
       <Marquee />
       <Features />
       <Technology />
+      <Media />
       <Gallery />
       <Design />
       <Pricing />
+      <Quiz />
       <Testimonials />
       <CTA />
       <Footer />

@@ -6,8 +6,12 @@ export default function Navbar() {
 
   const navItems = [
     { label: "Overview", href: "#overview" },
-    { label: "Performance", href: "#specs" },
+    { label: "Technology", href: "#technology" },
+    { label: "Media", href: "#media" },
+    { label: "Gallery", href: "#gallery" },
     { label: "Design", href: "#design" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "Quiz", href: "#quiz" },
     { label: "Order", href: "#order" },
   ];
 
@@ -15,10 +19,10 @@ export default function Navbar() {
     <header className="fixed top-0 inset-x-0 z-50 bg-black/40 backdrop-blur-md border-b border-white/10">
       <div className="mx-auto max-w-7xl px-6">
         <div className="h-16 flex items-center justify-between">
-          <a href="#" className="text-white text-xl font-semibold tracking-wider">
+          <a href="#overview" className="text-white text-xl font-semibold tracking-wider">
             Roadster
           </a>
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -47,7 +51,7 @@ export default function Navbar() {
         </div>
 
         {open && (
-          <div className="md:hidden pb-6 space-y-2">
+          <div className="md:hidden pb-6 grid grid-cols-2 gap-2">
             {navItems.map((item) => (
               <a
                 key={item.href}
