@@ -1,3 +1,5 @@
+import Reveal from './Reveal';
+
 export default function Gallery() {
   const shots = [
     { id: 1, label: "Front Quarter", src: "https://images.unsplash.com/photo-1549924231-f129b911e442?w=1600&q=80&auto=format&fit=crop" },
@@ -10,7 +12,10 @@ export default function Gallery() {
 
   return (
     <section id="gallery" className="relative bg-black">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_0%,rgba(255,255,255,0.04),transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[length:40px_40px] opacity-[0.04]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_0%,rgba(255,255,255,0.05),transparent_60%)]" />
+      </div>
       <div className="relative mx-auto max-w-7xl px-6 py-24">
         <div className="flex items-end justify-between gap-6">
           <div>
@@ -20,20 +25,21 @@ export default function Gallery() {
           <a href="#order" className="hidden sm:inline-block text-sm text-white/70 hover:text-white">Reserve →</a>
         </div>
         <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-4">
-          {shots.map((s) => (
-            <div
-              key={s.id}
-              className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02]"
-            >
-              <img
-                src={s.src}
-                alt={s.label}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_50%,rgba(239,68,68,0.16),transparent_60%)]" />
-              <div className="absolute inset-x-0 bottom-0 p-3 text-xs tracking-widest uppercase text-white/80 bg-gradient-to-t from-black/60 to-transparent">{s.label}</div>
-            </div>
+          {shots.map((s, i) => (
+            <Reveal key={s.id} delay={i * 60}>
+              <div
+                className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02]"
+              >
+                <img
+                  src={s.src}
+                  alt={s.label}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_50%,rgba(239,68,68,0.16),transparent_60%)]" />
+                <div className="absolute inset-x-0 bottom-0 p-3 text-xs tracking-widest uppercase text-white/80 bg-gradient-to-t from-black/60 to-transparent">{s.label}</div>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
